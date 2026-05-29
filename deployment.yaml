@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telecom-ticket-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: telecom-ticket
+  template:
+    metadata:
+      labels:
+        app: telecom-ticket
+    spec:
+      containers:
+      - name: telecom-ticket-container
+        image: telecom-ticket-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5001
